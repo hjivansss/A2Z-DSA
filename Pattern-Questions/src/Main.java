@@ -1,7 +1,7 @@
 
 public class Main {
     public static void main(String[] args) {
-        pattern14(5);
+        pattern22(5);
     }
     public static void pattern1(int n){
         for(int i=0;i<n;i++){
@@ -144,7 +144,178 @@ public class Main {
             System.out.println();
         }
     }
-    public static void pattern14(int n){
+    public static void pattern14(int n) {
+        for(int i=0;i<n;i++){
+            for(char ch='A';ch<='A'+i;ch++){
+                System.out.print(ch +" ");
+            }
+            System.out.println();
+        }
+    }
+    public static void pattern15(int n){
+        for(int i=0;i<n;i++){
+            for(char ch = 'A'; ch<='A'+(n-i-1);ch++){
+                System.out.print(ch + " ");
+
+            }
+            System.out.println();
+
+        }
+    }
+    public static void pattern16(int n){
+        for(int i=0;i<n;i++){
+            for(int j=0;j<=i;j++){
+                System.out.print((char)((int)('A'+i)) + " ");
+
+            }
+            System.out.println();
+
+        }
+    }
+    //imp
+    public static void pattern17(int n){
+        // Outer loop for the number of rows.
+        for(int i=0;i<n;i++){
+
+            //  spaces.
+            for(int j=0;j<n-i-1;j++){
+                System.out.print(" ");
+            }
+
+            //  characters.
+            char ch = 'A';
+            int breakpoint = (2*i+1)/2;
+            for(int j=1;j<=2*i+1;j++){
+
+                System.out.print(ch);
+                if(j <= breakpoint) ch++;
+                else ch--;
+            }
+
+            // for printing the spaces again.
+            for(int j=0;j<n-i-1;j++){
+                System.out.print(" ");
+            }
+            System.out.println();
+
+        }
+    }
+    public static void pattern18(int n){
+        // Outer loop for the no. of rows.
+        for(int i=0;i<n;i++){
+
+            // Inner loop for printing the alphabets from
+            // A + N -1 -i (i is row no.) to A + N -1 ( E in this case).
+            for(char ch =(char)(int)('A'+n-1-i);ch<=(char)(int)('A'+n-1);ch++){
+
+                System.out.print(ch + " ");
+            }
+            System.out.println();
+        }
+    }
+    public static void pattern19(int n) {
+        int iniSpaces = 0;
+        for (int i = 0; i < n; i++) {
+            //stars
+            for (int j = 1; j <= n - i; j++) {
+                System.out.print("* ");
+            }
+            //Spaces
+            for (int j = 0; j < iniSpaces; j++) {
+                System.out.print("  ");
+            }
+
+            //stars
+            for (int j = 1; j <= n - i; j++) {
+                System.out.print("* ");
+            }
+            iniSpaces += 2;
+            System.out.println();
+        }
+        for (int i = 0; i < n; i++) {
+            iniSpaces -= 2;
+            //stars
+            for (int j = 0; j <= i; j++) {
+                System.out.print("* ");
+            }
+            //Spaces
+            for (int j = 0; j < iniSpaces; j++) {
+                System.out.print("  ");
+            }
+            //Stars
+            for (int j = 0; j <= i; j++) {
+                System.out.print("* ");
+            }
+
+            System.out.println();
+        }
+    }
+    //imp
+    public static void pattern20(int n){
+        // initialising the spaces.
+        int spaces = 2*n-2;
+
+        // Outer loop for printing row.
+        for(int i = 1;i<=2*n-1;i++){
+
+            // stars for first half
+            int stars = i;
+
+            // stars for the second half.
+            if(i>n) stars = 2*n - i;
+
+            //for printing the stars
+            for(int j=1;j<=stars;j++){
+                System.out.print("*");
+            }
+
+            //for printing the spaces
+            for(int j = 1;j<=spaces;j++){
+                System.out.print(" ");
+            }
+
+            //for printing the stars
+            for(int j = 1;j<=stars;j++){
+                System.out.print("*");
+            }
+
+            System.out.println();
+            if(i<n) spaces -=2;
+            else spaces +=2;
+        }
+    }
+    public static void pattern21(int n){
+        // outer loop for no. of rows.
+        for(int i=0;i<n;i++){
+
+            // inner loop for printing the stars at borders only.
+            for(int j=0;j<n;j++){
+
+                if(i==0 || j==0 || i==n-1 || j==n-1)
+                    System.out.print("*");
+
+                    // if not border index, print space.
+                else System.out.print(" ");
+            }
+            System.out.println();
+        }
+    }
+    public static void pattern22(int n){
+        for(int i=0;i<n*2-1;i++){
+            for(int j=0;j<2*n-1;j++){
+                int top=i;
+                int left=j;
+                int right=(2*n-2)-j;
+                int bottom=(2*n-2)-i;
+                System.out.print(n-min(min(top,bottom),min(left,right)));
+            }
+            System.out.println();
+        }
+    }
+    public static int min(int a,int b){
+        if(a<b) return a;
+        else return b;
 
     }
+
 }
